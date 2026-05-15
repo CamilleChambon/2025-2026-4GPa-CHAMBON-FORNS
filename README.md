@@ -51,7 +51,7 @@ Notre capteur en graphite présente une résistance de l’ordre du gigaOhm, ce 
 Ce circuit convertit ainsi le faible courant issu du capteur en une tension propre, directement lisible et traitable par la carte Arduino.
 
 <p align="center">
-<img src="https://github.com/MOSH-Insa-Toulouse/2024-2025-4GP-Tajan-Benos/blob/main/Image/Circuit_amplificateur.png" alt="Figure 1 - Circuit amplificateur">
+<img src="https://github.com/CamilleChambon/2025-2026-4GPa-CHAMBON-FORNS/blob/main/Images/circuit_transimpedance.png" alt="Figure 1 - Circuit amplificateur">
 <br>
 <i>Circuit amplificateur transimpédance</i>
 </p>
