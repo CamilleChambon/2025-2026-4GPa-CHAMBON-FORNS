@@ -83,7 +83,7 @@ Nous avons commencé par l’édition du masque de gravure de notre circuit impr
 Une fois le PCB réalisé, nous n'avions plus qu'à le percer et y souder tous nos composants. Voici notre PCB final :
 
 <p align="center">
-<img src="https://github.com/CamilleChambon/2025-2026-4GPa-CHAMBON-FORNS/blob/main/Images/shield.jpg="Figure 4 - Notre PCB">
+<img src="Images/shield.jpg"Figure 4 - Notre PCB">
 <br>
 <i>Notre PCB</i>
 </p>
