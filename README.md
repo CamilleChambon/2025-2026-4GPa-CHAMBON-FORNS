@@ -17,16 +17,16 @@
 
 ## Description Projet Graphite
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dans le cadre de l’UE "Du capteur au banc de test" en 4e année de Génie Physique à l’INSA Toulouse, nous avons développé un capteur de contrainte basé sur une technologie low-tech. Ce capteur utilise du graphite déposé sur une feuille de papier à l’aide d’un crayon. Lorsque l'on applique une déformation au papier, la structure du graphite change, ce qui modifie ses propriétés électriques, comme la résistance. Ce capteur low-tech fonctionne grâce à la variation des connexions conductrices entre les nano-particules de graphite. Le transport des électrons se fait par effet tunnel entre les particules. Lorsqu'une déformation est appliquée, la distance entre les atomes varie. En extension, certains chemins de conduction sont interrompus, augmentant la résistance. En compression, la distance diminue, créant de nouveaux chemins et réduisant la résistance. La jauge de contrainte mesure ces variations de résistance pour déterminer la déformation et la contrainte appliquées. \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Le projet a consisté à développer un système complet autour de ce capteur : modélisation d'électronique analogique, création d’un circuit imprimé (PCB), programmation avec Arduino, ajout d’une interface utilisateur et communication sans fil via Bluetooth pour une application mobile. Un banc de test a été réalisé pour évaluer les performances du capteur à l'aide d'un banc de mesure réalisé en 3D. L’ensemble du travail a abouti à la rédaction d’une datasheet, décrivant les caractéristiques du capteur. Enfin, le projet visait à repondre à la question "Ce capteur est-il industrialisable ?", en comparaison avec les capteurs commerciaux déjà présents sur le marché.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dans le cadre du cours "Du capteur au banc de test" de 4e année de Génie Physique, nous avons développé un capteur de contrainte basé sur une technologie low-tech. Comme présenté en introduction de la datasheet (cf. section X), le capteur Graphite est un capteur de contrainte résistif, composant passif qui fonctionne en mesurant les variations de résistance d'une fine couche de graphite appliquée au crayon à papier sur une surface papier. Lorsque ce dernier est déformé en tension ou en compression, la répartition des particules de graphite est modifiée, entraînant respectivement une hausse ou une hausse de sa résistance. Par la mesure de ces variations de résistance, il est possible de remonter à la variation de résistance. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Le projet a consisté à développer un système complet autour de ce capteur : modélisation d'électronique analogique grâce au logiciel LTSpice, création d’un circuit imprimé (PCB) via Kicad, programmation avec Arduino, création d'une application mobile avec MIT App Inventor, et communication sans fil par Bluetooth, entre le téléphone et le système. Un banc de test a été spécialement réalisé en impression 3D pour évaluer les performances du capteur, grâce à des pièces circulaires de différents rayons de courbure.
 
 ## Livrables
 
-  - Shield PCB compatible avec Arduino UNO, intégrant un capteur graphite, un amplificateur transimpédance, un module Bluetooth, un écran OLED, un flex sensor, un potentiomètre digital et un encodeur rotatoire;
-  - Code Arduino assurant la lecture du capteur, l’affichage des données, la communication Bluetooth et l’interaction avec les composants;
-  - Application Android réalisée sous MIT App Inventor pour visualiser les mesures transmises par Bluetooth;
-  - Graphes caractéristiques de la variation de résistance du capteur graphène et du flex sensor, pour montrer les résultats obtenus sur le banc de test;
-  - Datasheet du capteur de graphite, présentant ses principales caractéristiques et résultats expérimentaux.
+  - Shield PCB compatible avec Arduino UNO, intégrant un capteur graphite, un amplificateur transimpédance, un module Bluetooth, un écran OLED, un flex sensor, un potentiomètre digital et un encodeur rotatoire.
+  - Code Arduino assurant la lecture du capteur, l’affichage des données, la communication Bluetooth et l’interaction avec les composants.
+  - Application Android réalisée sous MIT App Inventor pour visualiser les mesures transmises par Bluetooth.
+  - Graphes des variations relatives de résistance du capteur graphite - en tension et en compression - et du flex sensor pour montrer les résultats obtenus sur le banc de test.
+  - Datasheet du capteur de graphite, présentant ses principales caractéristiques, les résultats expérimentaux et un exemple de circuit d'utilisation courant.
 
 ## Matériel nécessaire
 
