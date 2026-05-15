@@ -102,7 +102,7 @@ Chaque possibilité est piloté par des fonctions indépendantes les unes des au
 
 ## Application Android
 
-Nous avons conçu une application Android en utilisant la plateforme MIT App Inventor. Cette application permet de recevoir les données de la carte Arduino via une connexion Bluetooth en utilisant le module HC-05 qui se trouve sur notre shield. Après la connexion bluetooth, l'application nous donne en temps réel la valeur de la résistance du capteur graphite et trace sa courbe en fonction du temps sur un graphique. Vous la trouverez [ici] (Application MIT_App-Inventor).
+Nous avons conçu une application Android en utilisant la plateforme MIT App Inventor. Cette application permet de recevoir les données de la carte Arduino via une connexion Bluetooth en utilisant le module HC-05 qui se trouve sur notre shield. Après la connexion bluetooth, l'application nous donne en temps réel la valeur de la résistance du capteur graphite et trace sa courbe en fonction du temps sur un graphique. Vous la trouverez [Application MIT_App_Inventor](https://github.com/CamilleChambon/2025-2026-4GPa-CHAMBON-FORNS/tree/main/Application%20MIT_App_Inventor).
 
 
 ## Banc de test
