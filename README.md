@@ -102,7 +102,7 @@ Chaque possibilité est piloté par des fonctions indépendantes les unes des au
 
 ## Application Android
 
-Nous avons conçu une application Android en utilisant la plateforme MIT App Inventor. Cette application permet de recevoir les données de la carte Arduino via une connexion Bluetooth en utilisant le module HC-05 qui se trouve sur notre shield. Après la connexion bluetooth, l'application nous donne en temps réel la valeur de la résistance du capteur graphite et trace sa courbe en fonction du temps sur un graphique.
+Nous avons conçu une application Android en utilisant la plateforme MIT App Inventor. Cette application permet de recevoir les données de la carte Arduino via une connexion Bluetooth en utilisant le module HC-05 qui se trouve sur notre shield. Après la connexion bluetooth, l'application nous donne en temps réel la valeur de la résistance du capteur graphite et trace sa courbe en fonction du temps sur un graphique. Vous la trouverez [ici] (Application MIT_App-Inventor).
 
 
 ## Banc de test
@@ -163,5 +163,5 @@ Comme mentionnés dans la partie [IX. Banc de test](#banc-de-test), les résulta
 Ce projet fût très enrichissant, il nous a permis de concevoir la partie software et hardware d'un capteur, tout en le testant et réalisant une datasheet. Les différentes étapes nous ont fait acquérir de nouvelles connaissances et compétances que nous retrouverons probablement dans notre future carrière d'ingénieur physicien. Nous remercions nos professeurs pour nous avoir proposé ce projet et accompagné tout au long de celui-ci. 
 
 Vous pouvez nous contacter si vous avez la moindre question :
-- Vicky BENOS : benos@insa-toulouse.fr
-- Samuel TAJAN : stajan@insa-toulouse.fr
+- Timothy FORNS : forns@insa-toulouse.fr
+- Camille CHAMBON : chambo@insa-toulouse.fr
