@@ -19,7 +19,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dans le cadre du cours "Du capteur au banc de test" de 4e année de Génie Physique, nous avons développé un capteur de contrainte basé sur une technologie low-tech. Comme présenté en introduction de la datasheet (cf. section X), le capteur Graphite est un capteur de contrainte résistif, composant passif qui fonctionne en mesurant les variations de résistance d'une fine couche de graphite appliquée au crayon à papier sur une surface papier. Lorsque ce dernier est déformé en tension ou en compression, la répartition des particules de graphite est modifiée, entraînant respectivement une hausse ou une hausse de sa résistance. Par la mesure de ces variations de résistance, il est possible de remonter à la variation de résistance. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Le projet a consisté à développer un système complet autour de ce capteur : modélisation d'électronique analogique grâce au logiciel LTSpice, création d’un circuit imprimé (PCB) via Kicad, programmation avec Arduino, création d'une application mobile avec MIT App Inventor, et communication sans fil par Bluetooth, entre le téléphone et le système. Un banc de test a été spécialement réalisé en impression 3D pour évaluer les performances du capteur, grâce à des pièces circulaires de différents rayons de courbure.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Le projet a consisté à développer un système complet autour de ce capteur : modélisation d'électronique analogique grâce au logiciel LTSpice, création d’un circuit imprimé (PCB) via Kicad, programmation avec Arduino, création d'une application mobile avec MIT App Inventor, et communication sans fil par Bluetooth, entre le téléphone et le système. Un banc de test a été spécialement réalisé en impression 3D pour évaluer les performances du capteur, grâce à des pièces circulaires de différents rayons de courbure. En ce qui concerne les codes, ayant rencontré des problèmes pour faire fonctionner l'écran OLED, nous avons rédigé deux codes distincts, l'un avec l'écran, l'autre sans.
 
 ## Livrables
 
@@ -44,10 +44,7 @@
 
 ## Electronique Analogique sous LTSpice
 
-Notre capteur en graphite présente une résistance de l’ordre du gigaOhm, ce qui génère un courant de quelques pico à nano Ampères sous une tension de 5 V. Pour rendre ce signal exploitable par l’ADC d’une Arduino UNO, nous avons conçu un amplificateur transimpédance autour de l’AOP LTC1050, il a une très faible dérive et un excellent décalage d’offset. Après avoir modélisé le capteur et le montage sous LTspice pour de déterminer la meilleure valeur de la résistance de rétroaction, nous avons ajouté trois étages de filtrage afin d'améliorer la qualité du signal :  
-   1- Filtre passe-bas pour éliminer les hautes fréquences parasites,  
-   2- Filtre passe-bas pour atténuer le bruit secteur à 50 Hz,  
-   3- Filtre passe-bas pour supprimer les interférences liées à l’ADC.  
+Notre capteur graphite présente une résistance de l’ordre du gigaOhm, ce qui génère un courant de quelques pico à nano Ampères sous une tension de 5 V. Pour rendre ce signal exploitable par l’ADC d’une Arduino UNO, nous avons conçu un amplificateur transimpédance autour de l’AOP LTC1050. Après avoir modélisé le capteur et le montage sous LTspice pour de déterminer la meilleure valeur de la résistance de rétroaction, nous avons ajouté trois étages de filtrage, fondés sur des filtres passe-bas, afin d'améliorer la qualité du signal en éliminant les hautes fréquences parasites, en atténuant le bruit secteur à 50 Hz et en supprimant les interférences liées à l’ADC.  
 
 Ce circuit convertit ainsi le faible courant issu du capteur en une tension propre, directement lisible et traitable par la carte Arduino.
 
@@ -160,7 +157,7 @@ Grâce à la série d'étapes amenant aux tests réalisés sur les deux capteurs
 
 Comme mentionnés dans la partie [IX. Banc de test](#banc-de-test), les résultats montrent que le capteur commercial possède plusieurs avantages par rapport au capteur graphène. Il est plus fiable, plus durable, et moins contraignant, ce qui nous amène à être réticents à l'idée de commercialiser notre capteur. Toutefois, sa sensibilité est plus qu'acceptable, et il est capable de mesurer en compression. Pour une utilisation unique et rapide, il reste une belle option. Si nous améliorions sa capacité de compression (en protégeant le graphite par un gel par exemple), il deviendrait une solution de choix. Mais cette solution est avant tout low tech, il faudrait donc rester acessible. 
 
-Ce projet fût très enrichissant, il nous a permis de concevoir la partie software et hardware d'un capteur, tout en le testant et réalisant une datasheet. Les différentes étapes nous ont fait acquérir de nouvelles connaissances et compétances que nous retrouverons probablement dans notre future carrière d'ingénieur physicien. Nous remercions nos professeurs pour nous avoir proposé ce projet et accompagné tout au long de celui-ci. 
+Ce projet fut très enrichissant, il nous a permis de concevoir la partie software et hardware d'un capteur, tout en le testant et réalisant une datasheet. Les différentes étapes nous ont fait acquérir de nouvelles connaissances et compétances que nous retrouverons probablement dans notre future carrière d'ingénieur physicien. Nous remercions nos professeurs pour nous avoir proposé ce projet et accompagné tout au long de celui-ci. 
 
 Vous pouvez nous contacter si vous avez la moindre question :
 - Timothy FORNS : forns@insa-toulouse.fr
