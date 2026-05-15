@@ -61,7 +61,7 @@ Ce circuit convertit ainsi le faible courant issu du capteur en une tension prop
 Lors de la phase de conception du shield, nous avons d’abord repris le gabarit d’une carte Arduino UNO dans KiCad (version 8.0) pour garantir une compatibilité mécanique et électrique. Après avoir listé tous les éléments dont nous avions besoin, nous avons créé dans KiCad, les symboles et empreintes manquants en respectant leurs dimensions et l’écartement des broches. Voici le schéma électrique de l'ensemble de notre montage :
 
 <p align="center">
-<img src="https://github.com/MOSH-Insa-Toulouse/2024-2025-4GP-Tajan-Benos/blob/main/Image/Circuit_electronique.png" alt="Figure 1 - Circuit électronique">
+<img src="https://github.com/CamilleChambon/2025-2026-4GPa-CHAMBON-FORNS/blob/main/Images/circuit_electronique.png" alt="Figure 1 - Circuit électronique">
 <br>
 <i>Circuit électronique</i>
 </p>
@@ -70,7 +70,7 @@ Une fois notre bibliothèque faite, nous avons assemblé le schéma électrique 
 Voici notre PCB :
 
 <p align="center">
-<img src="https://github.com/MOSH-Insa-Toulouse/2024-2025-4GP-Tajan-Benos/blob/main/Image/PCB.png" alt="Figure 1 - PCB Final">
+<img src="https://github.com/CamilleChambon/2025-2026-4GPa-CHAMBON-FORNS/blob/main/Images/PCB.png" alt="Figure 1 - PCB Final">
 <br>
 <i>PCB</i>
 </p>
@@ -83,7 +83,7 @@ Nous avons commencé par l’édition du masque de gravure de notre circuit impr
 Une fois le PCB réalisé, nous n'avions plus qu'à le percer et y souder tous nos composants. Voici notre PCB final :
 
 <p align="center">
-<img src="https://github.com/MOSH-Insa-Toulouse/2024-2025-4GP-Tajan-Benos/blob/main/Image/PCB_final.jpg" alt="Figure 4 - Notre PCB">
+<img src="https://github.com/CamilleChambon/2025-2026-4GPa-CHAMBON-FORNS/blob/main/Images/shield.jpg="Figure 4 - Notre PCB">
 <br>
 <i>Notre PCB</i>
 </p>
@@ -98,28 +98,12 @@ Le programme permet d'initialiser et de paramétrer nos composants pour le bon f
 - "Capteur Graph" dans le but d'afficher la mesure de résistance sur le capteur graphène
 - "Bluetooth" afin d'envoyer des mesures toutes les 2 secondes à l'application Androïd, permettant de modifier la courbure du capteur graphène et d'en remarquer la variation de résistance
 
-<p align="center">
-<img src="https://github.com/MOSH-Insa-Toulouse/2024-2025-4GP-Tajan-Benos/blob/main/Image/OLED_4_choix.png" alt="Figure 5 - OLED">
-<br>
-<i>Menu initial sur l'écran OLED</i>
-</p>
-
 Chaque possibilité est piloté par des fonctions indépendantes les unes des autres.
 
 ## Application Android
 
 Nous avons conçu une application Android en utilisant la plateforme MIT App Inventor. Cette application permet de recevoir les données de la carte Arduino via une connexion Bluetooth en utilisant le module HC-05 qui se trouve sur notre shield. Après la connexion bluetooth, l'application nous donne en temps réel la valeur de la résistance du capteur graphite et trace sa courbe en fonction du temps sur un graphique.
 
-<p align="center">
-<img src="https://github.com/MOSH-Insa-Toulouse/2024-2025-4GP-Tajan-Benos/blob/main/Application%20Android/Application_interface.jpg" alt="Figure 2 - Interface Application">
-<br>
-<i>Interface Application</i>
-</p>
-<p align="center">
-<img src="https://github.com/MOSH-Insa-Toulouse/2024-2025-4GP-Tajan-Benos/blob/main/Application%20Android/Shemablock_appli.png" alt="Figure 3 - Schema Block">
-<br>
-<i>Schéma block</i>
-</p>
 
 ## Banc de test
 
@@ -128,7 +112,7 @@ Après avoir réalisé le montage électrique complet, ainsi que les parties sof
 Pour cela, nous avons utilisé le banc de test ci-dessous, constitué de 6 cylindres différents dont les diamètres D font 14,8 mm ; 19,8 mm ; 24,8 mm ; 29,8 mm ; 34,8 mm ; 39,8 mm.
 
 <p align="center">
-<img src="https://github.com/MOSH-Insa-Toulouse/2024-2025-4GP-Tajan-Benos/blob/main/Image/Banc%20de%20test.png" alt="Figure 6 - Banc de Test">
+<img src="https://github.com/CamilleChambon/2025-2026-4GPa-CHAMBON-FORNS/blob/main/Images/banc_de_test.jpg" alt="Figure 6 - Banc de Test">
 <br>
 <i>Banc de test utilisé</i>
 </p>
