@@ -44,9 +44,9 @@
 ## Electronique Analogique sous LTSpice
 
 Notre capteur en graphite présente une résistance de l’ordre du gigaOhm, ce qui génère un courant de quelques pico à nano Ampères sous une tension de 5 V. Pour rendre ce signal exploitable par l’ADC d’une Arduino UNO, nous avons conçu un amplificateur transimpédance autour de l’AOP LTC1050, il a une très faible dérive et un excellent décalage d’offset. Après avoir modélisé le capteur et le montage sous LTspice pour de déterminer la meilleure valeur de la résistance de rétroaction, nous avons ajouté trois étages de filtrage afin d'améliorer la qualité du signal :  
-   1- Filtre passe-bas à 16 Hz (R1–C1) pour éliminer les hautes fréquences parasites,  
-   2- Filtre passe-bas à 1,6 Hz (R3–C4) pour atténuer le bruit secteur à 50 Hz,  
-   3- Filtre passe-bas à 1,6 kHz (R6–C2) pour supprimer les interférences liées à l’ADC.  
+   1- Filtre passe-bas pour éliminer les hautes fréquences parasites,  
+   2- Filtre passe-bas pour atténuer le bruit secteur à 50 Hz,  
+   3- Filtre passe-bas pour supprimer les interférences liées à l’ADC.  
 
 Ce circuit convertit ainsi le faible courant issu du capteur en une tension propre, directement lisible et traitable par la carte Arduino.
 
