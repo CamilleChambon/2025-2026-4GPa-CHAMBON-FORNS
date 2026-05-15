@@ -18,6 +18,7 @@
 ## Description Projet Graphite
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dans le cadre du cours "Du capteur au banc de test" de 4e année de Génie Physique, nous avons développé un capteur de contrainte basé sur une technologie low-tech. Comme présenté en introduction de la datasheet (cf. section X), le capteur Graphite est un capteur de contrainte résistif, composant passif qui fonctionne en mesurant les variations de résistance d'une fine couche de graphite appliquée au crayon à papier sur une surface papier. Lorsque ce dernier est déformé en tension ou en compression, la répartition des particules de graphite est modifiée, entraînant respectivement une hausse ou une hausse de sa résistance. Par la mesure de ces variations de résistance, il est possible de remonter à la variation de résistance. 
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Le projet a consisté à développer un système complet autour de ce capteur : modélisation d'électronique analogique grâce au logiciel LTSpice, création d’un circuit imprimé (PCB) via Kicad, programmation avec Arduino, création d'une application mobile avec MIT App Inventor, et communication sans fil par Bluetooth, entre le téléphone et le système. Un banc de test a été spécialement réalisé en impression 3D pour évaluer les performances du capteur, grâce à des pièces circulaires de différents rayons de courbure.
 
 ## Livrables
