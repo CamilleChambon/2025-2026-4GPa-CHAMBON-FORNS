@@ -127,15 +127,13 @@ en fonction de la déformation (![fraction](https://latex.codecogs.com/svg.image
 Voici les courbes caractéristiques du capteur graphène, en tension et en compression : 
 
 <p align="center">
-<img src="https://github.com/MOSH-Insa-Toulouse/2024-2025-4GP-Tajan-Benos/blob/main/Image/Courbe%20Capteur%20Graphène%20Tension.png" alt="Figure 7 - Tension">
+<img src="https://github.com/CamilleChambon/2025-2026-4GPa-CHAMBON-FORNS/blob/main/Images/variation_relative_de_r%C3%A9sistance_en_traction.png" alt="Figure 7 - Tension">
 <br>
-<i>Caractéristique du Capteur Graphène en tension</i>
 </p>
 
 <p align="center">
 <img src="https://github.com/CamilleChambon/2025-2026-4GPa-CHAMBON-FORNS/blob/main/Images/variation_relative_de_r%C3%A9sistance_en_compression.png" alt="Figure 8 - Compression">
 <br>
-<i>Caractéristique du Capteur Graphène en compression</i>
 </p>
 
 Et ci-dessous la caractéristique du flex sensor en tension : 
