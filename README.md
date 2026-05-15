@@ -139,9 +139,8 @@ Voici les courbes caractéristiques du capteur graphène, en tension et en compr
 Et ci-dessous la caractéristique du flex sensor en tension : 
 
 <p align="center">
-<img src="https://github.com/MOSH-Insa-Toulouse/2024-2025-4GP-Tajan-Benos/blob/main/Image/Courbe%20Flex%20Sensor.png" alt="Figure 9 - Flex Sensor">
+<img src="https://github.com/CamilleChambon/2025-2026-4GPa-CHAMBON-FORNS/blob/main/Images/Flex.png">
 <br>
-<i>Caractéristique du flex sensor en tension</i>
 </p>
 
 Nous remarquons que la résistance évolue lorsque le capteur graphite est soumis à une déformation. En tension, la résistance augmente, tandis qu'en compression, elle diminue. Ce phénomène s'explique par le rapprochement des atomes lors de la compression, facilitant ainsi le passage du courant. Lors de la tension, les atomes s'éloignent, le courant a alors plus de mal pour passer. Les résultats montrent aussi que le type de crayon utilisé influence les valeurs de résistance mesurées. 
