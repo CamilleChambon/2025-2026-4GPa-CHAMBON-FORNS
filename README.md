@@ -17,7 +17,7 @@
 
 ## Description Projet Graphite
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dans le cadre du cours "Du capteur au banc de test" de 4e année de Génie Physique, nous avons développé un capteur de contrainte basé sur une technologie low-tech. Comme présenté en introduction de la datasheet (cf. section X), le capteur Graphite est un capteur de contrainte résistif, composant passif qui fonctionne en mesurant les variations de résistance d'une fine couche de graphite appliquée au crayon à papier sur une surface papier. Lorsque ce dernier est déformé en tension ou en compression, la répartition des particules de graphite est modifiée, entraînant respectivement une hausse ou une hausse de sa résistance. Par la mesure de ces variations de résistance, il est possible de remonter à la variation de résistance. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dans le cadre du cours "Du capteur au banc de test" de 4e année de Génie Physique, nous avons développé un capteur de contrainte basé sur une technologie low-tech. Comme présenté en introduction de la datasheet (cf. section X), le capteur Graphite est un capteur de contrainte résistif, composant passif qui fonctionne en mesurant les variations de résistance d'une fine couche de graphite appliquée au crayon à papier sur une surface papier. Lorsque ce dernier est déformé en tension ou en compression, la répartition des particules de graphite est modifiée, entraînant respectivement une hausse ou une baisse de sa résistance. Par la mesure de ces variations de résistance, il est possible de remonter à la variation de résistance. 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Le projet a consisté à développer un système complet autour de ce capteur : modélisation d'électronique analogique grâce au logiciel LTSpice, création d’un circuit imprimé (PCB) via Kicad, programmation avec Arduino, création d'une application mobile avec MIT App Inventor, et communication sans fil par Bluetooth, entre le téléphone et le système. Un banc de test a été spécialement réalisé en impression 3D pour évaluer les performances du capteur, grâce à des pièces circulaires de différents rayons de courbure. En ce qui concerne les codes, ayant rencontré des problèmes pour faire fonctionner l'écran OLED, nous avons rédigé deux codes distincts, l'un avec l'écran, l'autre sans.
 
@@ -44,7 +44,7 @@
 
 ## Electronique Analogique sous LTSpice
 
-Notre capteur graphite présente une résistance de l’ordre du gigaOhm, ce qui génère un courant de quelques pico à nano Ampères sous une tension de 5 V. Pour rendre ce signal exploitable par l’ADC d’une Arduino UNO, nous avons conçu un amplificateur transimpédance autour de l’AOP LTC1050. Après avoir modélisé le capteur et le montage sous LTspice pour de déterminer la meilleure valeur de la résistance de rétroaction, nous avons ajouté trois étages de filtrage, fondés sur des filtres passe-bas, afin d'améliorer la qualité du signal en éliminant les hautes fréquences parasites, en atténuant le bruit secteur à 50 Hz et en supprimant les interférences liées à l’ADC.  
+Notre capteur graphite présente une résistance de l’ordre du gigaOhm, ce qui génère un courant de quelques pico à nano Ampères sous une tension de 5 V. Pour rendre ce signal exploitable par l’ADC d’une Arduino UNO, nous avons conçu un amplificateur transimpédance autour de l’AOP LTC1050. Après avoir modélisé le capteur et le montage sous LTspice pour déterminer la meilleure valeur de la résistance de rétroaction, nous avons ajouté trois étages de filtrage, fondés sur des filtres passe-bas, afin d'améliorer la qualité du signal en éliminant les hautes fréquences parasites, en atténuant le bruit secteur à 50 Hz et en supprimant les interférences liées à l’ADC.  
 
 Ce circuit convertit ainsi le faible courant issu du capteur en une tension propre, directement lisible et traitable par la carte Arduino.
 
@@ -107,7 +107,7 @@ Nous avons conçu une application Android en utilisant la plateforme MIT App Inv
 
 Après avoir réalisé le montage électrique complet, ainsi que les parties softwares adéquates, il était nécessaire de tester notre capteur ainsi que le capteur commercial pour pouvoir les comparer. 
 
-Pour cela, nous avons utilisé le banc de test ci-dessous, constitué de 6 cylindres différents dont les diamètres D font 14,8 mm ; 19,8 mm ; 24,8 mm ; 29,8 mm ; 34,8 mm ; 39,8 mm.
+Pour cela, nous avons utilisé le banc de test ci-dessous, constitué de différents rayons de courbure.
 
 <p align="center">
 <img src="https://github.com/CamilleChambon/2025-2026-4GPa-CHAMBON-FORNS/blob/main/Images/banc_de_test.jpg" alt="Figure 6 - Banc de Test">
@@ -115,9 +115,9 @@ Pour cela, nous avons utilisé le banc de test ci-dessous, constitué de 6 cylin
 <i>Banc de test utilisé</i>
 </p>
 
-Pour toutes les mesures, nous avons assigné une valeur de 10 kΩ à la résistance du potentiomètre digital. En ce qui concerne le capteur graphène, nous déposions le graphite issu des crayons 6B, 3B, et B. Nous n'avons pas réussi à obtenir des valeurs convenables avec des crayons plus durs. 
+Pour toutes les mesures, la résistance du potentiomètre digital était déterminée par la fonction de calibration. En ce qui concerne le capteur graphène, nous déposions le graphite issu des crayons HB, 3B et B. Nous n'avons pas réussi à obtenir des valeurs convenables avec des crayons plus durs. 
 
-Le principe du test est de poser le capteur sur le cylindre et de le tordre selon la courbure du cylindre. Une fois le capteur bien posé, nous relevons la valeur de la résistance. 
+Le principe du test est de poser le capteur et le flex sensor et de le tordre petit à petit à l'aide des pales du moteur qui tournent. Cela permet d'obtenir les valeurs de résistance en fonction de la déformation appliquée.
 
 Pour nos calculs, les valeurs qui nous intéressent sont la variation relative de résitance (![fraction](https://latex.codecogs.com/svg.image?\frac{\Delta%20R}{R_0_}))
 en fonction de la déformation (![fraction](https://latex.codecogs.com/svg.image?\frac{\epsilon}{D})). 
@@ -145,7 +145,7 @@ Nous remarquons que la résistance évolue lorsque le capteur graphite est soumi
 
 La capacité de déformation en compression du capteur graphène n'est pas très fiable selon nos résulats. Le modèle linéaire attendu s'éloigne de la caractéristique sur les grosses déformations. Ceci peut être en partie dû au frottement du graphite sur le banc de test, qui peut perturber l'agencement des atomes et ainsi les mesures réalisées. 
 
-Ces résultats expérimentaux permettent de conclure que le capteur commercial est globalement plus sensible à la déformation que les capteurs en graphite, même si cette dernière est acceptable. De plus, il possède une certaine robustesse contrairement aux capteurs en papier : ceux-ci sont fragiles et n'importe quel contact peut altérer le gtaphite déposé. Le nombre d'utilisation est aussi limité, entre 1 et 3 séries de tests pour la plupart. Au-delà, les variations de résistance étaient très aléatoires et parfois inexistantes. Il était également nécessaire de déposer une grande quantité de graphite sur le papier pour pouvoir mesurer une résistance, notamment avec des crayons bien gras. 
+Ces résultats expérimentaux permettent de conclure que le capteur commercial est globalement plus sensible à la déformation que les capteurs en graphite, même si cette dernière est acceptable. De plus, il possède une certaine robustesse contrairement aux capteurs en papier : ceux-ci sont fragiles et n'importe quel contact peut altérer le gtaphite déposé. Le nombre d'utilisation est aussi limité, entre 3 et 5 séries de tests pour la plupart. Au-delà, les variations de résistance étaient très aléatoires et parfois inexistantes. Il était également nécessaire de déposer une grande quantité de graphite sur le papier pour pouvoir mesurer une résistance, notamment avec des crayons bien gras. 
 
 ## Datasheet
 
@@ -155,9 +155,15 @@ La datasheet de notre capteur est disponible [ici](Datasheet).
 
 Grâce à la série d'étapes amenant aux tests réalisés sur les deux capteurs, nous pouvons répondre à la question, à savoir si le capteur graphène est industrialisable ou non. 
 
-Comme mentionnés dans la partie [IX. Banc de test](#banc-de-test), les résultats montrent que le capteur commercial possède plusieurs avantages par rapport au capteur graphène. Il est plus fiable, plus durable, et moins contraignant, ce qui nous amène à être réticents à l'idée de commercialiser notre capteur. Toutefois, sa sensibilité est plus qu'acceptable, et il est capable de mesurer en compression. Pour une utilisation unique et rapide, il reste une belle option. Si nous améliorions sa capacité de compression (en protégeant le graphite par un gel par exemple), il deviendrait une solution de choix. Mais cette solution est avant tout low tech, il faudrait donc rester acessible. 
+Comme mentionnés dans la partie [IX. Banc de test](#banc-de-test), les résultats montrent que le capteur commercial possède plusieurs avantages par rapport au capteur graphène. Il est plus fiable, plus durable, et moins contraignant. Ces éléments peuvent rendre une commercialisation à grande échelle plus complexe dans l’état actuel du prototype.
 
-Ce projet fut très enrichissant, il nous a permis de concevoir la partie software et hardware d'un capteur, tout en le testant et réalisant une datasheet. Les différentes étapes nous ont fait acquérir de nouvelles connaissances et compétances que nous retrouverons probablement dans notre future carrière d'ingénieur physicien. Nous remercions nos professeurs pour nous avoir proposé ce projet et accompagné tout au long de celui-ci. 
+Néanmoins, le capteur en graphite demeure une option particulièrement pertinente dans certains contextes d’usage. Sa sensibilité s’est révélée plus qu’acceptable, et il est capable d’effectuer des mesures en compression, ce qui confirme la viabilité du concept. Pour des applications ponctuelles, rapides ou à usage unique, il constitue une alternative crédible et efficace.
+
+Par ailleurs, ce capteur présente des atouts importants liés à sa philosophie de conception : son faible coût, sa simplicité de fabrication et son caractère low tech le rendent particulièrement accessible. Utilisant des matériaux simples et peu transformés, il s’inscrit également dans une démarche plus sobre et écologique que certaines solutions commerciales plus complexes. Il conserve donc un réel intérêt.
+
+Des pistes d’amélioration restent envisageables, notamment pour renforcer ses performances en compression (par exemple via une protection du graphite à l’aide d’un gel ou d’un matériau souple adapté) tout en conservant l’accessibilité et la simplicité qui font sa force. L’enjeu serait ainsi d’améliorer sa robustesse sans compromettre son aspect économique et durable.
+
+Ce projet fut particulièrement enrichissant, car il nous a permis de concevoir à la fois les parties software et hardware d’un capteur, puis de le caractériser expérimentalement et d’élaborer une datasheet. Les différentes étapes du projet nous ont permis d’acquérir de nouvelles connaissances et compétences, que nous serons probablement amenés à mobiliser dans notre future carrière d’ingénieur physicien. Nous remercions nos professeurs pour leur accompagnement et pour nous avoir proposé ce projet tout au long du semestre.
 
 Vous pouvez nous contacter si vous avez la moindre question :
 - Timothy FORNS : forns@insa-toulouse.fr
