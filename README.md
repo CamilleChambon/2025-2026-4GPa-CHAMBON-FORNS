@@ -56,7 +56,7 @@ Ce circuit convertit ainsi le faible courant issu du capteur en une tension prop
 
 ## Création du PCB sous KiCad
 
-Lors de la phase de conception du shield, nous avons d’abord repris le gabarit d’une carte Arduino UNO dans KiCad (version 8.0) pour garantir une compatibilité mécanique et électrique. Après avoir listé tous les éléments dont nous avions besoin, nous avons créé dans KiCad, les symboles et empreintes manquants en respectant leurs dimensions et l’écartement des broches. Voici le schéma électrique de l'ensemble de notre montage :
+Lors de la phase de conception du shield, nous avons d’abord repris le gabarit d’une carte Arduino UNO dans KiCad (version 8.0) puis nous avons créé sur le même logiciel les symboles et empreintes manquants pour l'ensemble des composants que nous utiliserions, en respectant leurs dimensions et l’écartement des broches. Voici le schéma électrique de l'ensemble de notre montage :
 
 <p align="center">
 <img src="https://github.com/CamilleChambon/2025-2026-4GPa-CHAMBON-FORNS/blob/main/Images/circuit_electronique.png" alt="Figure 1 - Circuit électronique">
@@ -64,7 +64,7 @@ Lors de la phase de conception du shield, nous avons d’abord repris le gabarit
 <i>Circuit électronique</i>
 </p>
 
-Une fois notre bibliothèque faite, nous avons assemblé le schéma électrique complet : chaque composant est relié selon le fonctionnement prévu. Cette étape nous a permis de vérifier que l’ensemble des composants tenait bien sur la zone réservée au Shield. En passant à la vue PCB, nous avons effectué le routage des pistes dans le but d'une organisation optimale puis ajouté un plan de masse pour relier les pistes au GND. 
+Une fois notre bibliothèque faite, nous avons assemblé le schéma électrique complet : chaque composant est relié selon le fonctionnement prévu. Sur la vue PCB, nous avons disposé les empreintes, effectué le routage des pistes, le tout afin d'optimiser l'espace disponible et de limiter le nombre de vias réalisés. Les résistances ont été positionnées verticalement sur le PCB. Enfin, nous avons ajouté un plan de masse pour relier certaines pistes au GND.
 Voici notre PCB :
 
 <p align="center">
@@ -77,7 +77,7 @@ Le résultat est un circuit imprimé prêt à être fabriqué et à recevoir cha
 
 ## Réalisation du Shield
 
-Nous avons commencé par l’édition du masque de gravure de notre circuit imprimé (PCB) à l’aide du logiciel KiCad. Ensuite, nous avons procédé à l’insolation UV d’une plaquette d’époxy recouverte d’une fine couche de cuivre et de résine photosensible. La plaquette a ensuite été immergée dans un révélateur chimique, ce qui permet d’éliminer la résine non exposée aux UV. Il faut ensuite plonger la plaquette dans du perchlorure de fer pour graver les pistes du circuit en dissolvant le cuivre non protégé. Enfin, il faut un nettoyage à l’acétone pour retirer les résidus de résine restants sur la plaquette. A la fin de ce travail, nous avions notre circuit imprimé avec toutes les pistes tracées. 
+Nous avons commencé par l’édition du masque de gravure de notre circuit imprimé (PCB) à l’aide du logiciel KiCad. Ensuite, nous avons procédé à l’insolation UV d’une plaquette recouverte d’une fine couche de cuivre et de résine photosensible. La plaquette a été immergée dans un révélateur chimique, ce qui permet d’éliminer la résine non exposée aux UV. Par la suite, on plonge la plaquette dans du perchlorure de fer pour graver les pistes du circuit en dissolvant le cuivre non protégé. Enfin, il faut un nettoyage à l’acétone pour retirer les résidus de résine restant sur la plaquette. A la fin de ce travail, nous avions notre circuit imprimé avec toutes les pistes tracées.
 Une fois le PCB réalisé, nous n'avions plus qu'à le percer et y souder tous nos composants. Voici notre PCB final :
 
 <p align="center">
@@ -88,26 +88,26 @@ Une fois le PCB réalisé, nous n'avions plus qu'à le percer et y souder tous n
 
 ## Code Arduino 
 
-Ce projet a été piloté par un [programme Arduino](Code%20Arduino). Pour utiliser les fonctions spéciales à tous les composants, nous avons installé les librairies Adafruit_SSD1306.h , SPI.h , et SoftwareSerial.h.
+Ce projet a été piloté par un [programme Arduino](Code%20Arduino). Pour utiliser les fonctions spéciales à tous les composants, nous avons installé les librairies Adafruit_SSD1306.h et Adfruit_GFX.h, SPI.h, Servo.h et SoftwareSerial.h.
 
-Le programme permet d'initialiser et de paramétrer nos composants pour le bon fonctionnement du circuit. Une fois la carte mise sous tension, l'écran OLED affiche 4 possibilités sélectionnables grâce à l'encodeur rotatoire : 
-- "Calib Potar" permettant de définir la valeur de la résistance du potentiomètre (notée R2 dans notre montage et notre code)
-- "FlexSensor" pour réaliser une mesure momentanée de résistence du flex sensor
-- "Capteur Graph" dans le but d'afficher la mesure de résistance sur le capteur graphène
-- "Bluetooth" afin d'envoyer des mesures toutes les 2 secondes à l'application Androïd, permettant de modifier la courbure du capteur graphène et d'en remarquer la variation de résistance
+Nous avons joint sur ce github deux codes distincts, avec des caractéristiques communes cependant.
 
-Chaque possibilité est piloté par des fonctions indépendantes les unes des autres.
+Le code intitulé "code_final" est un code qui utilise les deux capteurs (flex et graphite), le servo-moteur, le module bluetooth et le potentiomètre. Il réalise deux étapes : une calibration, pour ramener à 2,5 V, la tension lue aux bornes du capteur graphite sans déformation, puis un cycle de mesure. Ces étapes sont lancées depuis les boutons de l'application Android (cf. infra). Lors d'un cycle de mesure, réalisé sur notre banc de test, le moteur avance d'un certain nombre de pas, puis l'on réalise une série de mesures dont on fait la moyenne pour obtenir une valeur stable, que l'on affiche ensuite sur l'application. Puis, le moteur avance de nouveau, et ainsi de suite. Plusieurs paramètres peuvent être réglés sur l'application Android :
+- l'angle est la plage angulaire totale couverte par le servo-moteur;
+- le nombre de mesures est le nombre de mesures sucessives que l'on réalise pour calculer une moyenne *sur une seule valeur de déformation* ;
+- le nombre de pas correspond au nombre de points que l'on va afficher au final, c'est-à-dire, le nombre de mesures effectives réalisées.
+
+Le code appelé "main" repose sur le même principe, bien qu'il ne présente pas d'étape de calibration. Cependant, il présente par ailleurs des menus affichés sur l'écran OLED permettant de régler les paramètres précisés supra, et utilise l'encodeur rotatoire comme moyen de se déplacer dans ces menus. Il est associé à un programme Python récupérant les données pour les afficher dans des graphiques.
+
 
 ## Application Android
 
-Nous avons conçu une application Android en utilisant la plateforme MIT App Inventor. Cette application permet de recevoir les données de la carte Arduino via une connexion Bluetooth en utilisant le module HC-05 qui se trouve sur notre shield. Après la connexion bluetooth, l'application nous donne en temps réel la valeur de la résistance du capteur graphite et trace sa courbe en fonction du temps sur un graphique. Vous la trouverez [Application MIT_App_Inventor](https://github.com/CamilleChambon/2025-2026-4GPa-CHAMBON-FORNS/tree/main/Application%20MIT_App_Inventor).
+Nous avons conçu une application Android en utilisant la plateforme MIT App Inventor. Cette application permet de recevoir les données de la carte Arduino via une connexion Bluetooth en utilisant le module HC-05 qui se trouve sur notre PCB. Après la connexion bluetooth, l'application nous donne en temps réel la valeur de la résistance du capteur graphite et trace sa courbe en fonction du temps sur un graphique. Vous la trouverez [Application MIT_App_Inventor](https://github.com/CamilleChambon/2025-2026-4GPa-CHAMBON-FORNS/tree/main/Application%20MIT_App_Inventor).
 
 
 ## Banc de test
 
-Après avoir réalisé le montage électrique complet, ainsi que les parties softwares adéquates, il était nécessaire de tester notre capteur ainsi que le capteur commercial pour pouvoir les comparer. 
-
-Pour cela, nous avons utilisé le banc de test ci-dessous, constitué de différents rayons de courbure.
+Après avoir réalisé le montage électrique complet, ainsi que les parties softwares adéquates, il était nécessaire de tester notre capteur ainsi que le capteur commercial pour pouvoir les comparer. Pour cela, nous avons utilisé le banc de test ci-dessous, constitué de pièces circulaires de différents rayons de courbure (2 cm, 3 cm, 4 cm, 5 cm).
 
 <p align="center">
 <img src="https://github.com/CamilleChambon/2025-2026-4GPa-CHAMBON-FORNS/blob/main/Images/banc_de_test.jpg" alt="Figure 6 - Banc de Test">
@@ -115,14 +115,14 @@ Pour cela, nous avons utilisé le banc de test ci-dessous, constitué de différ
 <i>Banc de test utilisé</i>
 </p>
 
-Pour toutes les mesures, la résistance du potentiomètre digital était déterminée par la fonction de calibration. En ce qui concerne le capteur graphène, nous déposions le graphite issu des crayons HB, 3B et B. Nous n'avons pas réussi à obtenir des valeurs convenables avec des crayons plus durs. 
+Pour toutes les mesures, la résistance du potentiomètre digital était déterminée par la fonction de calibration. En ce qui concerne le capteur graphite, nous déposions du graphite issu de crayons HB, 3B et B. Nous n'avons pas réussi à obtenir des valeurs convenables avec des crayons plus durs.
 
 Le principe du test est de poser le capteur et le flex sensor et de le tordre petit à petit à l'aide des pales du moteur qui tournent. Cela permet d'obtenir les valeurs de résistance en fonction de la déformation appliquée.
 
 Pour nos calculs, les valeurs qui nous intéressent sont la variation relative de résitance (![fraction](https://latex.codecogs.com/svg.image?\frac{\Delta%20R}{R_0_}))
 en fonction de la déformation (![fraction](https://latex.codecogs.com/svg.image?\frac{\epsilon}{D})). 
 
-Voici les courbes caractéristiques du capteur graphène, en tension et en compression : 
+Voici les courbes caractéristiques du capteur graphite, en tension et en compression : 
 
 <p align="center">
 <img src="https://github.com/CamilleChambon/2025-2026-4GPa-CHAMBON-FORNS/blob/main/Images/variation_relative_de_r%C3%A9sistance_en_traction.png" alt="Figure 7 - Tension">
@@ -143,9 +143,9 @@ Et ci-dessous la caractéristique du flex sensor en tension :
 
 Nous remarquons que la résistance évolue lorsque le capteur graphite est soumis à une déformation. En tension, la résistance augmente, tandis qu'en compression, elle diminue. Ce phénomène s'explique par le rapprochement des atomes lors de la compression, facilitant ainsi le passage du courant. Lors de la tension, les atomes s'éloignent, le courant a alors plus de mal pour passer. Les résultats montrent aussi que le type de crayon utilisé influence les valeurs de résistance mesurées. 
 
-La capacité de déformation en compression du capteur graphène n'est pas très fiable selon nos résulats. Le modèle linéaire attendu s'éloigne de la caractéristique sur les grosses déformations. Ceci peut être en partie dû au frottement du graphite sur le banc de test, qui peut perturber l'agencement des atomes et ainsi les mesures réalisées. 
+La capacité de déformation en compression du capteur graphite n'est pas très fiable selon nos résulats. Le modèle linéaire attendu s'éloigne de la caractéristique sur les grosses déformations. Ceci peut être en partie dû au frottement du graphite sur le banc de test, qui peut perturber l'agencement des atomes et ainsi les mesures réalisées. 
 
-Ces résultats expérimentaux permettent de conclure que le capteur commercial est globalement plus sensible à la déformation que les capteurs en graphite, même si cette dernière est acceptable. De plus, il possède une certaine robustesse contrairement aux capteurs en papier : ceux-ci sont fragiles et n'importe quel contact peut altérer le gtaphite déposé. Le nombre d'utilisation est aussi limité, entre 3 et 5 séries de tests pour la plupart. Au-delà, les variations de résistance étaient très aléatoires et parfois inexistantes. Il était également nécessaire de déposer une grande quantité de graphite sur le papier pour pouvoir mesurer une résistance, notamment avec des crayons bien gras. 
+Ces résultats expérimentaux permettent de conclure que le capteur commercial est globalement plus sensible à la déformation que les capteurs en graphite, même si cette dernière est acceptable. De plus, il possède une certaine robustesse contrairement aux capteurs en papier : ceux-ci sont fragiles et n'importe quel contact peut altérer le gtaphite déposé. Le nombre d'utilisation est aussi limité, entre 3 et 5 séries de tests pour la plupart. Au-delà, les variations de résistance étaient très aléatoires et parfois inexistantes. Il était également nécessaire de déposer une grande quantité de graphite sur le papier pour pouvoir mesurer une résistance, notamment avec des crayons gras. 
 
 ## Datasheet
 
@@ -153,13 +153,13 @@ La datasheet de notre capteur est disponible [ici](Datasheet).
 
 ## Conclusion
 
-Grâce à la série d'étapes amenant aux tests réalisés sur les deux capteurs, nous pouvons répondre à la question, à savoir si le capteur graphène est industrialisable ou non. 
+Grâce à la série d'étapes amenant aux tests réalisés sur les deux capteurs, nous pouvons répondre à la question posée initialement, à savoir : le capteur graphite est industrialisable ou non ? 
 
-Comme mentionnés dans la partie [IX. Banc de test](#banc-de-test), les résultats montrent que le capteur commercial possède plusieurs avantages par rapport au capteur graphène. Il est plus fiable, plus durable, et moins contraignant. Ces éléments peuvent rendre une commercialisation à grande échelle plus complexe dans l’état actuel du prototype.
+Comme mentionné dans la partie [IX. Banc de test](#banc-de-test), les résultats montrent que le capteur commercial possède plusieurs avantages par rapport au capteur graphène. Il est plus fiable, plus durable et moins contraignant. Ces éléments peuvent rendre une commercialisation à grande échelle plus complexe dans l’état actuel du prototype.
 
-Néanmoins, le capteur en graphite demeure une option particulièrement pertinente dans certains contextes d’usage. Sa sensibilité s’est révélée plus qu’acceptable, et il est capable d’effectuer des mesures en compression, ce qui confirme la viabilité du concept. Pour des applications ponctuelles, rapides ou à usage unique, il constitue une alternative crédible et efficace.
+Néanmoins, le capteur graphite demeure une option particulièrement pertinente dans certains contextes d’usage. Sa sensibilité s’est révélée plus qu’acceptable, et il est capable d’effectuer des mesures en compression, ce qui confirme la viabilité du concept. Pour des applications ponctuelles, rapides ou à usage unique, il constitue une alternative crédible et efficace.
 
-Par ailleurs, ce capteur présente des atouts importants liés à sa philosophie de conception : son faible coût, sa simplicité de fabrication et son caractère low tech le rendent particulièrement accessible. Utilisant des matériaux simples et peu transformés, il s’inscrit également dans une démarche plus sobre et écologique que certaines solutions commerciales plus complexes. Il conserve donc un réel intérêt.
+Par ailleurs, ce capteur présente des atouts importants liés à sa philosophie de conception : son faible coût, sa simplicité de fabrication et son caractère low-tech le rendent particulièrement accessible. Utilisant des matériaux simples et peu transformés, il s’inscrit également dans une démarche plus sobre et écologique que certaines solutions commerciales plus complexes. Il conserve donc un réel intérêt.
 
 Des pistes d’amélioration restent envisageables, notamment pour renforcer ses performances en compression (par exemple via une protection du graphite à l’aide d’un gel ou d’un matériau souple adapté) tout en conservant l’accessibilité et la simplicité qui font sa force. L’enjeu serait ainsi d’améliorer sa robustesse sans compromettre son aspect économique et durable.
 
@@ -168,3 +168,4 @@ Ce projet fut particulièrement enrichissant, car il nous a permis de concevoir 
 Vous pouvez nous contacter si vous avez la moindre question :
 - Timothy FORNS : forns@insa-toulouse.fr
 - Camille CHAMBON : chambo@insa-toulouse.fr
+- Faustine GIRAUD : girau@insa-toulouse.fr
